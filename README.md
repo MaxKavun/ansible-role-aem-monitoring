@@ -50,8 +50,14 @@ Requirements
 You can override any variable below by setting "variable: value" in playbook.
 
 
-- `variable`
-Description of variable
+- `es_host`
+Elasticsearch host address. By default localhost
+- `es_port`
+Elasticsearch port. By default 9200
+- `run_every`
+Time how often ElastAlert will query Elasticsearch. By default 5 minutes
+- `buffer_time`
+size of the query window, stretching backwards from the time each query is run. By default 5 minutes
 
 
 ## Advanced config parameters:
@@ -72,7 +78,7 @@ Example Playbook
 ----------------
 
 
-### Installing Filebeat 6.x version:
+### Installing latest elastalert:
 
 
 ```yaml
@@ -80,6 +86,13 @@ Example Playbook
   hosts: all
   roles:
     - role: ansible-role-aem-monitoring
+  vars:
+    es_host: localhost
+    es_port: 9200
+    run_every:
+      minutes: 10
+    buffer_time:
+      hours: 1
 ```
 
 
