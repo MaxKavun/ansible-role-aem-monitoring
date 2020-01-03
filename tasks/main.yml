@@ -20,6 +20,14 @@
       pip:
         requirements: '{{ temp_folder }}/requirements.txt'
         executable: pip3
+
+    - name: Place config file with settings
+      template:
+        src: config.yaml.j2
+        dest: '{{ main_folder }}'/config.yaml
+        owner: root
+        group: root
+        mode: 0644
         
   become: true
 

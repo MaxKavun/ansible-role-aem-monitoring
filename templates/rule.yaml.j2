@@ -1,0 +1,21 @@
+es_host: 172.31.42.17
+es_port: 9200
+name: Example rule
+type: change
+index: metricbeat-*
+compare_key: jolokia.jolokia_metrics.query.healthcheck.status
+ignore_null: true
+query_key: cloud.instance.id
+timeframe:
+  minutes: 10
+filter:
+- query:
+  - query_string:
+      query: "jolokia.jolokia_metrics.memory.heap_usage.committed>1"
+alert: sns
+alert_subject: "Subject example"
+alert_text: "Text example"
+sns_topic_arn: example
+aws_access_key: example
+aws_secret_key: example
+aws_region: eu-north-1

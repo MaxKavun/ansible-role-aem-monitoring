@@ -1,4 +1,7 @@
 ---
 main_folder: /opt/elastalert
+rules_folder: /opt/elastalert/rules
 temp_folder: /tmp/elastalert
 elastalert_repo: https://github.com/Yelp/elastalert.git
+es_host: localhost
+es_port: 9200
