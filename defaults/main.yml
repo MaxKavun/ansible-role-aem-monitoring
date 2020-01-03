@@ -1,0 +1,4 @@
+---
+main_folder: /opt/elastalert
+temp_folder: /tmp/elastalert
+elastalert_repo: https://github.com/Yelp/elastalert.git
