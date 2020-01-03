@@ -58,13 +58,19 @@ Elasticsearch port. By default 9200
 Time how often ElastAlert will query Elasticsearch. By default 5 minutes
 - `buffer_time`
 size of the query window, stretching backwards from the time each query is run. By default 5 minutes
+- `writeback_index`
+Index where all rules will be stored
 
 
 ## Advanced config parameters:
 
 
-- `variable`
-Description of variable
+- `main_folder`
+Default folder where config will be stored. By default /opt/elastalert
+- `rules_folder`
+Default folder where rules will be stored. Default is /opt/elastalert/rules
+- `temp_folder`
+Default folder where repo will be placed. By default it is /tmp/elastalert
 
 
 ## Dependencies
