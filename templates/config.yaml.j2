@@ -1,8 +1,6 @@
 es_host: {{ es_host }}
 es_port: {{ es_port }}
-run_every:
-  minutes: 5
-buffer_time:
-  minutes: 5
-writeback_index: elastalert
+run_every: {{ run_every }}
+buffer_time: {{ buffer_time }}
+writeback_index: {{ writeback_index }}
 rules_folder: {{ rules_folder }}

@@ -11,6 +11,12 @@
         name: elastalert
         executable: pip3
 
+    - name: Create directories if it does not exist
+      file:
+        src: '{{ rules_folder }}'
+        state: directory
+        mode: '0755'
+
     - name: Git checkout from elastalert repo
       git:
         repo: '{{ elastalert_repo }}'
@@ -24,7 +30,15 @@
     - name: Place config file with settings
       template:
         src: config.yaml.j2
-        dest: '{{ main_folder }}'/config.yaml
+        dest: '{{ main_folder }}/config.yaml'
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Place rule to rules directory
+      template:
+        src: rule.yaml.j2
+        dest: '{{ rules_folder }}/config.yaml'
         owner: root
         group: root
         mode: 0644
