@@ -117,28 +117,29 @@ Example Playbook
     buffer_time:
       hours: 1
     rules_config:
-      name: Example rule
-      type: change
-      index: metricbeat-*
-      compare_key: jolokia.jolokia_metrics.query.healthcheck.status
-      ignore_null: true
-      query_key: cloud.instance.id
-      timeframe:
-        minutes: 10
-      filter:
-      - query:
-        - query_string:
-            query: "jolokia.jolokia_metrics.memory.heap_usage.committed>1"
-      alert: sns
-      alert_subject: "Queue was broken"
-      alert_text: "AEM queue was broken"
-      sns_topic_arn: Your arn of your topic
-      aws_access_key: access key
-      aws_secret_key: secret key
-      aws_region: your region
+      rule1:
+        name: Example rule
+        type: change
+        index: metricbeat-*
+        compare_key: jolokia.jolokia_metrics.query.healthcheck.status
+        ignore_null: true
+        query_key: cloud.instance.id
+        timeframe:
+          minutes: 10
+        filter:
+        - query:
+          - query_string:
+              query: "jolokia.jolokia_metrics.memory.heap_usage.committed>1"
+        alert: sns
+        alert_subject: "Queue was broken"
+        alert_text: "AEM queue was broken"
+        sns_topic_arn: Your arn of your topic
+        aws_access_key: access key
+        aws_secret_key: secret key
+        aws_region: your region
 ```
 
-### Installing latest elastalert with alert which has type frequeny and sns notification:
+### Installing latest elastalert with alert which has type frequeny and command execution:
 
 
 ```yaml
@@ -154,18 +155,32 @@ Example Playbook
     buffer_time:
       hours: 1
     rules_config:
-      name: Example rule
-      type: frequency
-      num_events: 2
-      index: metricbeat-*
-      timeframe:
-        minutes: 30
-      filter:
-      - query:
-        - query_string:
-            query: "system.cpu.idle.pct: <0.3"
-      alert: command
-      command: ["/bin/send_alert", "--username", "{match[username]}"]
+      rule1:
+        name: example_rule_1
+        type: frequency
+        num_events: 2
+        index: metricbeat-*
+        timeframe:
+          minutes: 30
+        filter:
+        - query:
+          - query_string:
+              query: "system.cpu.idle.pct: <0.3"
+        alert: command
+        command: ["/bin/send_alert", "--username", "{match[username]}"]
+      rule1:
+        name: example_rule_2
+        type: frequency
+        num_events: 2
+        index: metricbeat-*
+        timeframe:
+          minutes: 30
+        filter:
+        - query:
+          - query_string:
+              query: "system.cpu.idle.pct: <0.5"
+        alert: command
+        command: ["/bin/send_alert", "--username", "{match[username]}"]
 ```
 
 License
