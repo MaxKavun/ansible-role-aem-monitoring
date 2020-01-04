@@ -33,7 +33,9 @@ Requirements
 
 
 - Minimal Version of the ansible for installation: 2.9
+- AEM node version 7.5 with jolokia agent https://github.com/lean-delivery/ansible-role-aem-node
 - Minimal Version of the Elastic stack: 7.5
+- Metricbeat https://github.com/MaxKavun/ansible-role-metricbeats
  - **Supported OS**:
    - CentOS
      - 7,8
@@ -168,7 +170,7 @@ Example Playbook
               query: "system.cpu.idle.pct: <0.3"
         alert: command
         command: ["/bin/send_alert", "--username", "{match[username]}"]
-      rule1:
+      rule2:
         name: example_rule_2
         type: frequency
         num_events: 2
