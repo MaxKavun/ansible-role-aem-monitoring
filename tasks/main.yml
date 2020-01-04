@@ -41,10 +41,10 @@
     - name: Place rule to rules directory
       template:
         src: rule.yaml.j2
-        dest: '{{ rules_folder }}/{{ rule_name }}.yaml'
+        dest: '{{ rules_folder }}/{{ item.value.name }}.yaml'
         owner: root
         group: root
         mode: 0644
-      with_items: '{{ rules_config }}'
+      with_dict: '{{ rules_config }}'
         
   become: true
