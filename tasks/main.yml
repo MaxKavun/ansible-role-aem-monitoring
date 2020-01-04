@@ -41,11 +41,14 @@
     - name: Place rule to rules directory
       template:
         src: rule.yaml.j2
-        dest: '{{ rules_folder }}/config.yaml'
+        dest: '{{ rules_folder }}/{{ rule_name }}.yaml'
         owner: root
         group: root
         mode: 0644
+      vars:
+        rule_name: '{{ item.value.rule_name }}'
+        es_host: '{{ item.value.es_host }}'
+        es_port: '{{ item.value.es_port }}'
+      with_dict: '{{ rules_config }}'
         
   become: true
-
-  
