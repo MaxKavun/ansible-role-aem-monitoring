@@ -24,7 +24,7 @@
       git:
         repo: '{{ elastalert_repo }}'
         dest: '{{ temp_folder }}'
-    
+
     - name: Install requirements for python
       pip:
         requirements: '{{ temp_folder }}/requirements.txt'
@@ -60,5 +60,5 @@
         name: elastalert
         state: started
         daemon-reload: yes
-        
+
   become: true
