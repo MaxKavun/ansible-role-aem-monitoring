@@ -24,6 +24,7 @@
       git:
         repo: '{{ elastalert_repo }}'
         dest: '{{ temp_folder }}'
+        version: master
 
     - name: Install requirements for python
       pip:
